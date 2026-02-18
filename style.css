@@ -1,4 +1,7 @@
-/* Reset y base */
+/* ==========================================================================
+   Reset y base
+   ========================================================================== */
+
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +21,15 @@ body {
   overflow-x: hidden;
 }
 
-/* Variables */
+/* Prefers-reduced-motion (accesibilidad) */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Variables CSS */
 :root {
   --primary: #3b82f6;
   --secondary: #8b5cf6;
@@ -33,13 +44,14 @@ body {
   --shadow-lg: 0 20px 50px rgba(0,0,0,0.6);
   --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --radius: 1.5rem;
-  --gap: clamp(1.5rem, 4vw, 2.5rem);
-  --padding-card: clamp(1.5rem, 3vw, 2rem);
+  --gap: clamp(1.5rem, 4vw, 3rem);
+  --padding-card: clamp(2.5rem, 4vw, 3.5rem);
+  --margin-section: clamp(5rem, 10vw, 8rem);
 }
 
-/* Contenedor */
+/* Contenedor principal */
 .container {
-  max-width: 1280px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -72,8 +84,8 @@ body {
 }
 
 .hero h1 {
-  font-size: clamp(3rem, 8vw, 6rem);
-  margin-bottom: 1.5rem;
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  margin-bottom: 2rem;
   background: linear-gradient(to right, #60a5fa, #a78bfa);
   -webkit-background-clip: text;
   background-clip: text;
@@ -81,13 +93,13 @@ body {
 }
 
 .hero-subtitle {
-  font-size: clamp(1.3rem, 4vw, 1.8rem);
-  margin-bottom: 2.5rem;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  margin-bottom: 3rem;
   opacity: 0.95;
 }
 
 .hero-urgency {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: var(--warning);
   font-weight: 600;
 }
@@ -100,8 +112,8 @@ body {
   border-radius: 9999px;
   transition: var(--transition);
   cursor: pointer;
-  padding: 1rem 2.5rem;
-  font-size: 1.25rem;
+  padding: 1.2rem 3rem;
+  font-size: 1.3rem;
 }
 
 .btn-primary {
@@ -123,39 +135,39 @@ body {
 }
 
 .btn-secondary:hover {
-  background: rgba(96,165,250,0.15);
+  background: rgba(96,165,250,0.2);
   transform: translateY(-3px);
 }
 
 /* WhatsApp flotante */
 .whatsapp-float {
   position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
+  bottom: 2rem;
+  right: 2rem;
   z-index: 1000;
 }
 
 .whatsapp-icon {
-  width: 3.8rem;
-  height: 3.8rem;
+  width: 4rem;
+  height: 4rem;
   background: #25d366;
   color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
   transition: var(--transition);
 }
 
 .whatsapp-float:hover .whatsapp-icon {
-  transform: scale(1.12);
-  box-shadow: var(--shadow-md);
+  transform: scale(1.15);
+  box-shadow: 0 15px 40px rgba(37,211,102,0.6);
 }
 
-/* Secciones */
+/* Secciones – espaciado global mejorado */
 .section {
-  padding: 6rem 0;
+  padding: var(--margin-section) 0;
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.9s ease, transform 0.9s ease;
@@ -166,17 +178,42 @@ body {
   transform: translateY(0);
 }
 
+/* Título de sección – más separado */
+.section h2 {
+  margin-bottom: clamp(3rem, 6vw, 4rem);
+  text-align: center;
+  font-size: clamp(2.8rem, 7vw, 4.5rem);
+  letter-spacing: 1px;
+}
+
+/* Párrafo descriptivo – mucho más separado y centrado */
+.section-desc {
+  font-size: clamp(1.15rem, 2.8vw, 1.4rem);
+  line-height: 1.9;
+  max-width: 800px;
+  margin: 0 auto clamp(5rem, 10vw, 7rem) auto; /* 7rem de espacio abajo – gran aire */
+  color: #94a3b8;
+  opacity: 0.92;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+/* Grid / wrapper – margen superior para separar del texto */
+.grid, .plans-grid, .plans-wrapper, .results-grid, .testimonios-grid {
+  margin-top: clamp(3rem, 6vw, 5rem); /* espacio grande entre descripción y contenido */
+}
+
 /* Grid flexible y centrado */
 .grid, .plans-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 420px));
+  grid-template-columns: repeat(auto-fit, minmax(360px, 440px));
   gap: var(--gap);
   justify-content: center;
-  max-width: 1300px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
-/* Tarjetas */
+/* Tarjetas – espaciado interno generoso */
 .card, .plan-card {
   background: var(--bg-card);
   border-radius: var(--radius);
@@ -186,10 +223,11 @@ body {
   border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  height: 100%;
-  min-height: 480px;
-  position: relative;
+  align-items: center;
   text-align: center;
+  height: 100%;
+  min-height: 520px;
+  position: relative;
   padding: var(--padding-card);
 }
 
@@ -201,10 +239,10 @@ body {
 
 .card img {
   width: 100%;
-  height: 220px;
+  height: 240px;
   object-fit: cover;
   border-radius: var(--radius) var(--radius) 0 0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .card .card-content, .plan-card {
@@ -213,41 +251,43 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 .card h3, .plan-card h3 {
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
+  font-size: 1.9rem;
+  margin-bottom: 1.5rem;
   color: #60a5fa;
 }
 
 .price {
-  font-size: 2.4rem;
+  font-size: 3rem;
   font-weight: 800;
   color: #a78bfa;
-  margin: 1rem 0 1.5rem;
+  margin: 1rem 0 2rem;
 }
 
 .card ul, .plan-card ul {
   list-style: none;
-  margin: 0 0 1.5rem;
+  margin: 0 0 2.5rem;
   padding: 0;
   flex-grow: 1;
+  width: 100%;
 }
 
 .card li, .plan-card li {
-  margin-bottom: 0.8rem;
-  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
   color: #cbd5e1;
 }
 
 .card .btn, .plan-card .btn {
-  margin-top: auto;
+  margin-top: 3rem;
   width: 100%;
-  max-width: 240px;
+  max-width: 300px;
 }
 
-/* Badge */
+/* Badge centrado arriba */
 .badge {
   position: absolute;
   top: -0.75rem;
@@ -256,19 +296,19 @@ body {
   background: #fbbf24;
   color: #1e293b;
   font-weight: bold;
-  padding: 0.5rem 1.2rem;
+  padding: 0.6rem 1.4rem;
   border-radius: 9999px;
-  font-size: 0.9rem;
-  box-shadow: 0 4px 10px rgba(251,191,36,0.4);
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(251,191,36,0.4);
   z-index: 2;
 }
 
 /* Urgencia */
 .urgency {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: #fbbf24;
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 2rem;
   font-weight: 600;
 }
 
@@ -306,13 +346,13 @@ body {
 .testimonios-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 .testimonio {
   background: var(--bg-card);
   border-radius: var(--radius);
-  padding: 2rem;
+  padding: 2.5rem;
   box-shadow: var(--shadow-sm);
   text-align: center;
   transition: var(--transition);
@@ -324,17 +364,17 @@ body {
 }
 
 .testimonio img {
-  width: 90px;
-  height: 90px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid #60a5fa;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.8rem;
 }
 
 .quote {
   font-style: italic;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
   color: #cbd5e1;
 }
 
@@ -348,32 +388,32 @@ body {
   background: linear-gradient(135deg, #1e40af 0%, #6d28d9 100%);
   color: white;
   text-align: center;
-  padding: 8rem 1.5rem;
+  padding: 10rem 1.5rem;
 }
 
 .cta h2 {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
+  font-size: 3.5rem;
+  margin-bottom: 2rem;
 }
 
 .cta-text {
-  font-size: 1.4rem;
-  margin-bottom: 3rem;
-  max-width: 700px;
+  font-size: 1.5rem;
+  margin-bottom: 4rem;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
   opacity: 0.95;
 }
 
 .cta-urgency {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #fbbf24;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 /* Footer */
 footer {
-  padding: 4rem 1.5rem;
+  padding: 6rem 1.5rem;
   text-align: center;
   background: #000;
   color: #94a3b8;
