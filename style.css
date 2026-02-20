@@ -14,7 +14,8 @@ html {
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: #0f172a;
+ background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.88)),
+              url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920') center/cover no-repeat fixed;
   color: #e2e8f0;
   line-height: 1.6;
   min-height: 100vh;
