@@ -64,8 +64,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)),
-              url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920') center/cover no-repeat fixed;
+  background: linear-gradient(rgba(15, 23, 42, 0.1), rgba(15, 23, 42, 0.1)),
+              url('assets/img/secciones/Santi\ y\ Arju.jpg') center/cover no-repeat fixed;
   text-align: center;
   padding: 4rem 1.5rem;
   position: relative;
